@@ -1,0 +1,27 @@
+button{
+    color: white;
+    background-color: blue;
+    border-radius: 5px;
+    border: none;
+    margin: 0 0 0 5px;
+    text-transform: uppercase;
+}
+button:active{
+    background-color: rgb(0, 0, 128);
+}
+textarea{
+    outline: none;
+    border-radius: 5px;
+    resize:none;
+    border-color: blue;
+}
+.textarea:focus{
+    box-shadow: 0 0px 3px blue;
+}
+.wrap_posts{
+    padding: 0 5px;
+}
+.wrap_add_post{
+    display: flex;
+    margin-bottom: 5px;
+}

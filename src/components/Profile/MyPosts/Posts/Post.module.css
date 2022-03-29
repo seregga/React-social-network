@@ -1,0 +1,30 @@
+.item{
+    color:rgb(1, 1, 167);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.item_info{
+    display: flex;
+    align-items: center;
+}
+.item img {
+    max-width: 30px;
+    height: 30px;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+.item_like{
+    color:rgb(18, 18, 107);
+    font-size: 16px;
+    font-weight: 500;
+}
+.item_message{
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    /* max-width: 50%; */
+    overflow: hidden;
+}
+

@@ -1,0 +1,25 @@
+.dialogs{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    padding: 5px;
+}
+.dialogs__items{
+    text-decoration: none;
+    margin-bottom:10px;
+}
+.dialog a{
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+/* .dialog */
+/* .dialog:active{
+    color: goldenrod;
+    text-transform: uppercase;
+} */
+.messages{
+    text-decoration: none;
+}
+.message{
+    color: black;
+}

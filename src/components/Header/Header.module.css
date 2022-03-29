@@ -1,0 +1,9 @@
+.header{
+    grid-area: h;
+    background-color: #fff;
+}
+.header img {
+    height:100%;
+    overflow: hidden;
+    object-fit: cover;
+}
