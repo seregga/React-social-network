@@ -1,23 +1,33 @@
-.nav{
+.nav {
     grid-area: n;
     background-color: #fff;
     padding-left: 5px;
+    font-family: sans-serif;
 }
-.item a{
-    text-decoration:none ;
+
+.item a {
+    display: block;
+    text-decoration: none;
     color: #000;
     font-family: sans-serif;
     cursor: pointer;
 }
-/* .active-link{
-    color: goldenrod;
-} */
-.item a:active{
+
+.active__link {
+    background-color: aqua;
     color: goldenrod;
 }
-/* .active{
+
+/* .item a:active{
     color: goldenrod;
-}  */
+} */
+.active {
+    text-decoration: none;
+    font-family: sans-serif;
+    color: red;
+    cursor: pointer;
+}
+
 /* .item a:focus{
     color: goldenrod;
 

@@ -22,6 +22,7 @@ const MyPosts = (props) => {
 
     return (
         <div className={s.wrap_posts}>
+            <div>My Posts</div>
             <div className={s.wrap_add_post}>
                 <textarea ref={newPostElement}
                     className={s.textarea}

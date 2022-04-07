@@ -17,6 +17,7 @@ ReactDOM.render(
     </React.StrictMode>,
     document.getElementById('root')
 );
+window.store = store
 
 reportWebVitals();
 // export let renderEntireTree = () => {

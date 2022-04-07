@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import NavBar from './NavBar';
 
 let mapStateToProps = (state) => {
-    window.statesee = state
     return {
         sideBar: state.sideBar.navBarName
     }

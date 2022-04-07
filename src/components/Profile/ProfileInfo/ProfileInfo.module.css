@@ -1,0 +1,7 @@
+.profiile_photo{
+    max-width:  50px;
+    max-height: 50px;
+    overflow: hidden;
+    object-fit: cover;
+    padding: 5px;
+}
