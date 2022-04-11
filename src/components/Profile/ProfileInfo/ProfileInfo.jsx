@@ -11,13 +11,13 @@ const ProfileInfo = (props) => {
     }
 
     return (
-        <div>
+        <div className={s.profiile_info}>
             <div className={s.profiile_photo}>
                 <img src={!props.profile.photos.small ? userPhoto : props.profile.photos.small} alt="" />
                 {/* <img src={props.profile.photos.small != null ? props.profile.photos.small : userPhoto} alt="" /> */}
             </div>
             <div> {props.profile.fullName}</div>
-            <ProfileStatus {...props} />
+            <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
         </div>
     )
 

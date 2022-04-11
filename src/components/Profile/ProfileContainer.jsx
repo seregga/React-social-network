@@ -1,39 +1,32 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { getUserProfile } from './../../redux/profile-reducer';
+import { getUserProfile, updateStatus, getStatus } from './../../redux/profile-reducer';
 import { withAuthRedirect } from './../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.userId;
-        if (!userId) { userId = 2 }
+        if (!userId) { userId = 23193 }
         this.props.getUserProfile(userId)
-        // usersAPI.getProfile(userId)
-        //     // axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-        //     .then(r => {
-        //         this.props.setUserProfile(r.data)
-        //     })
+        this.props.getStatus(userId)
     }
 
     render() {
         return (
-            <Profile {...this.props} />
+            <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus} />
         )
     }
 }
 
-// let AuthRedirectComponent = withAuthRedirect(ProfileContainer) // hoc
-
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
+    status: state.profilePage.status,
 })
 
 export default compose(
-    connect(mapStateToProps, { getUserProfile }),
-    withAuthRedirect
+    connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
+    withAuthRedirect //hoc
 )(ProfileContainer)
-
-// export default connect(mapStateToProps, { getUserProfile })(AuthRedirectComponent)

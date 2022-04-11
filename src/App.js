@@ -7,10 +7,10 @@ import Settings from './components/Settings/Settings';
 import { Route, Routes } from 'react-router-dom';
 import UsersContainer from './components/Users/UsersContainer';
 import NavBarContainer from './components/NavBar/NavBarContainer';
-// import ProfileContainer from './components/Profile/ProfileContainer';
 import ProfileParams from './components/Profile/ProfileParams';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 const App = (props) => {
     return (
@@ -19,7 +19,7 @@ const App = (props) => {
             <NavBarContainer />
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/profile' element={<ProfileParams />} />
+                    <Route path='*' element={<ProfileContainer />} />
 
                     <Route path='/profile/:userId' element={<ProfileParams />} />
 
