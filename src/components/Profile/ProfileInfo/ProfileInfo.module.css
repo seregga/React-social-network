@@ -1,32 +1,36 @@
-.profiile_info {
+.profiile__info {
     margin-bottom: 20px;
 }
 
-.profiile_photo {
-    max-width: 50px;
-    max-height: 50px;
+.profiile__photo img {
+    width: 100px;
+    height: 120px;
     overflow: hidden;
     object-fit: cover;
-    padding: 5px;
+    border-radius: 5px;
 }
 
-.profile_input {
-    background-color: rgba(145, 145, 250, 0.349);
+.profiile__name {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 18px;
 }
 
-/* input {
-    border-radius: 5px;
-    resize: none;
-    border-color: blue;
-    border-style: double;
-    outline: none;
-} */
+.profile__status {
+    background-color: goldenrod;
+    border-radius: 4px;
+    padding: 2px;
+    cursor: pointer;
+}
 
-input:focus {
-    border-radius: 5px;
+.profile__status:focus {
     resize: none;
-    border-color: blue;
-    border-style: dotted;
+    /* border-color: goldenrod; */
+    border: none;
     outline: none;
-    box-shadow: 0 0px 3px blue;
+    box-shadow: 0 0px 3px goldenrod;
+    padding: 2px;
+    min-width: 50%;
+    font-size: 15px;
+    cursor: auto;
 }

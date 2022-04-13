@@ -18,11 +18,26 @@
     border: 1px solid #000;
     border-radius: 5px;
     overflow: hidden;
+    padding: 10px;
 }
 
-.app-wrapper-content img {
+/* .app-wrapper-content img {
     max-height: 100px;
     width: 100%;
     object-fit: cover;
     overflow: hidden;
+} */
+
+input {
+    border-radius: 5px;
+    border: none;
+    outline: blue;
+    outline-width: 1px;
+    outline-style: solid;
+    padding: 3px;
+    margin-bottom: 10px;
+}
+
+input:focus {
+    box-shadow: 0 0px 5px blue;
 }

@@ -1,25 +1,25 @@
-.dialogs{
+.dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
     padding: 5px;
 }
-.dialogs__items{
+
+.dialogs__items {
     text-decoration: none;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
-.dialog a{
+
+.dialog__user a {
     text-decoration: none;
     color: #000;
     cursor: pointer;
 }
-/* .dialog */
-/* .dialog:active{
-    color: goldenrod;
-    text-transform: uppercase;
-} */
-.messages{
-    text-decoration: none;
+
+.messages {
+    font-style: sans-serif;
+    line-height: 18px;
 }
-.message{
+
+.message {
     color: black;
 }

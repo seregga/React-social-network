@@ -1,3 +1,12 @@
+.wrap_posts {
+    padding: 0;
+}
+
+.wrap_add_post {
+    display: flex;
+    margin-bottom: 5px;
+}
+
 button {
     color: white;
     background-color: blue;
@@ -5,6 +14,10 @@ button {
     border: none;
     margin: 0 0 0 5px;
     text-transform: uppercase;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 255, 0.815);
 }
 
 button:active {
@@ -20,13 +33,4 @@ textarea {
 
 textarea:focus {
     box-shadow: 0 0px 3px blue;
-}
-
-.wrap_posts {
-    padding: 0 5px;
-}
-
-.wrap_add_post {
-    display: flex;
-    margin-bottom: 5px;
 }

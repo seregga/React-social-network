@@ -35,14 +35,14 @@ class ProfileStatus extends React.Component {
 
     render() {
         return (
-            <div className={s.profile_input}>
+            <div >
                 {!this.state.editMode
-                    ? <div>
-                        <span onClick={this.activateEditMode}>{this.props.status || 'No status'}</span>
+                    ? <div >
+                        <span className={s.profile__status} onClick={this.activateEditMode}>{this.props.status || 'No status'}</span>
                         {/* <span onClick={this.activateEditMode.bind(this)}>{this.props.status || 'no status'}</span> */}
                     </div>
-                    : <div className={s.profile_input}>
-                        <input onBlur={this.deActivateEditMode}
+                    : <div >
+                        <input className={s.profile__status} onBlur={this.deActivateEditMode}
                             // <input onBlur={this.deActivateEditMode.bind(this)}
                             autoFocus={true} value={this.state.status}
                             onChange={this.onStatusChange} />
