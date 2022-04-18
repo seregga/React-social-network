@@ -1,0 +1,5 @@
+.form__error {
+    border: red 1px solid;
+    color: red;
+    padding: 5px;
+}

@@ -77,15 +77,13 @@ export const setTotalUsersCount = (count) => ({ type: SET_TOTAL_USER_COUNT, coun
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const setToggleFollowing = (boolean, userId) => ({ type: SET_TOGGLE_FOLLOWING, boolean, userId });
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true))
 
         usersAPI.getUsers(currentPage, pageSize)
             .then(data => {
-
                 dispatch(setCurrentPage(currentPage)) // костыль(что бы не делать thunk для onPageChanged из UsersContainer)
-
                 dispatch(toggleIsFetching(false))
                 dispatch(setUsers(data.items))
                 dispatch(setTotalUsersCount(data.totalCount))
