@@ -3,6 +3,8 @@ import { usersAPI, profileAPI } from "../api/api";
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
+const DELETE_POST = 'DELETE_POST';
+const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
 let initialState = {
     posts: [
@@ -27,7 +29,6 @@ const profileReducer = (state = initialState, action) => {
             }
             stateCopy = {
                 ...state,
-                // newPostText: '',
                 posts: [...state.posts, newPost],
             };
             return stateCopy;
@@ -43,41 +44,53 @@ const profileReducer = (state = initialState, action) => {
                 ...state, status: action.status
             }
         }
+        case DELETE_POST: { // for test
+            return {
+                ...state, posts: state.posts.filter(p => p.id !== action.postId)
+            }
+        }
+        case SAVE_PHOTO_SUCCESS: {
+            return {
+                ...state,
+                profile: { ...state.profile, photos: action.photos }
+            }
+        }
         default:
             return state
 
     }
 }
-export const addPostActionCreator = (post) => ({ type: ADD_POST, post });
 
+export const addPostActionCreator = (post) => ({ type: ADD_POST, post });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const setStatus = (status) => ({ type: SET_STATUS, status })
+export const deletePost = (postId) => ({ type: DELETE_POST, postId })// for test
+export const savePhotoSuccess = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos })// for test
 
 
 // thunk
-export const getUserProfile = (userId) => (dispatch) => {
-    usersAPI.getProfile(userId)
-        .then(r => {
-            dispatch(setUserProfile(r.data))
-        })
+export const getUserProfile = (userId) => async (dispatch) => {
+    const r = await usersAPI.getProfile(userId)
+    dispatch(setUserProfile(r.data))
 }
 // thunk
-export const getStatus = (userId) => (dispatch) => {
-    profileAPI.getStatus(userId)
-        .then(r => {
-            dispatch(setStatus(r.data))
-        })
+export const getStatus = (userId) => async (dispatch) => {
+    const r = await profileAPI.getStatus(userId)
+    dispatch(setStatus(r.data))
 }
 // thunk
-export const updateStatus = (status) => (dispatch) => {
-    profileAPI.updateStatus(status)
-        .then(r => {
-            if (r.data.resultCode === 0) {
-                dispatch(setStatus(status))
-            }
-        })
+export const updateStatus = (status) => async (dispatch) => {
+    const r = await profileAPI.updateStatus(status)
+    if (r.data.resultCode === 0) {
+        dispatch(setStatus(status))
+    }
 }
-
-
+// thunk
+export const savePhoto = (file) => async (dispatch) => {
+    const r = await profileAPI.savePhoto(file)
+    if (r.data.resultCode === 0) {
+        dispatch(savePhotoSuccess(r.data.data.photos))
+    }
+}
 
 export default profileReducer;

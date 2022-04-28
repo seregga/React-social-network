@@ -1,6 +1,6 @@
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import ProfileContainer from './ProfileContainer';
-import { React } from 'react';
 
 const ProfileParams = (props) => {
     const { userId } = useParams();

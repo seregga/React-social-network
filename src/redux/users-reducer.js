@@ -44,7 +44,6 @@ const usersReducer = (state = initialState, action) => {
             }
         }
         case SET_USERS: {
-            // return { ...state, users: [...state.users, ...action.users] }
             return { ...state, users: action.users }
         }
         case SET_CURRENT_PAGE: {
@@ -78,44 +77,34 @@ export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isF
 export const setToggleFollowing = (boolean, userId) => ({ type: SET_TOGGLE_FOLLOWING, boolean, userId });
 
 export const requestUsers = (currentPage, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true))
+        dispatch(setCurrentPage(currentPage)) // костыль(что бы не делать thunk для onPageChanged из UsersContainer)
 
-        usersAPI.getUsers(currentPage, pageSize)
-            .then(data => {
-                dispatch(setCurrentPage(currentPage)) // костыль(что бы не делать thunk для onPageChanged из UsersContainer)
-                dispatch(toggleIsFetching(false))
-                dispatch(setUsers(data.items))
-                dispatch(setTotalUsersCount(data.totalCount))
-            })
+        const data = await usersAPI.getUsers(currentPage, pageSize)
+        dispatch(toggleIsFetching(false))
+        dispatch(setUsers(data.items))
+        dispatch(setTotalUsersCount(data.totalCount))
     }
 }
 export const follow = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setToggleFollowing(true, userId))
-        usersAPI.postFollow(userId)
-            .then(r => {
-                dispatch(setToggleFollowing(false, userId))
-                if (r.data.resultCode === 0) {
-                    dispatch(followSaccess(userId))
-                }
-
-            })
-
+        const r = await usersAPI.postFollow(userId)
+        dispatch(setToggleFollowing(false, userId))
+        if (r.data.resultCode === 0) {
+            dispatch(followSaccess(userId))
+        }
     }
 }
 export const unfollow = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setToggleFollowing(true, userId))
-        usersAPI.deleteFollow(userId)
-            .then(r => {
-                dispatch(setToggleFollowing(false, userId))
-                if (r.data.resultCode === 0) {
-                    dispatch(unfollowSaccess(userId))
-                }
-
-            })
-
+        const r = await usersAPI.deleteFollow(userId)
+        dispatch(setToggleFollowing(false, userId))
+        if (r.data.resultCode === 0) {
+            dispatch(unfollowSaccess(userId))
+        }
     }
 }
 

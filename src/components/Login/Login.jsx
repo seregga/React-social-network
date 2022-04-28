@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import { login } from './../../redux/auth-reducer';
 import { Navigate } from 'react-router-dom';
 
-const LoginForm = (props) => {
+const LoginForm = ({ handleSubmit, error }) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <Field placeholder={"email"} name={'email'} component={'input'} />
             </div>
@@ -18,7 +18,7 @@ const LoginForm = (props) => {
             <div>
                 <Field name={'rememberMe'} component={'input'} type={"checkbox"} />remember me
             </div>
-            {props.error && <div className={s.form__error}>{props.error}</div>}
+            {error && <div className={s.form__error}>{error}</div>}
             <div>
                 <button>log in</button>
             </div>
@@ -28,11 +28,11 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 
-const Login = (props) => {
+const Login = ({ login, isAuth }) => {
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        login(formData.email, formData.password, formData.rememberMe)
     }
-    if (props.isAuth) {
+    if (isAuth) {
         return <Navigate to={'/profile'} />
     }
     return (
@@ -44,7 +44,7 @@ const Login = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
 })
 
 export default connect(mapStateToProps, { login })(Login)

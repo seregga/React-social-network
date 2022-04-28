@@ -1,7 +1,6 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
-    padding: 5px;
 }
 
 .dialogs__items {
@@ -17,7 +16,7 @@
 
 .messages {
     font-style: sans-serif;
-    line-height: 18px;
+    line-height: 17px;
 }
 
 .message {

@@ -20,6 +20,11 @@ ReactDOM.render(
 window.store = store
 
 reportWebVitals();
+
+
+
+
+
 // export let renderEntireTree = () => {
 //     ReactDOM.render(
 //         <React.StrictMode>

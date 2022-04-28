@@ -2,16 +2,16 @@ const SEND_MESSAGE = 'SEND-MESSAGE';
 
 let initialState = {
     dialogs: [
-        { id: 1, name: 'Sergey' },
-        { id: 2, name: 'Vasa' },
+        { id: 1, name: 'Vika' },
+        { id: 2, name: 'Lena' },
         { id: 3, name: 'Dima' },
-        { id: 4, name: 'Lena' }
+        { id: 4, name: 'Groot' }
     ],
     messages: [
-        { id: 1, message: 'Hi' },
-        { id: 2, message: 'Hello' },
-        { id: 3, message: 'Hello world' },
-        { id: 4, message: 'Hello piople' }
+        { id: 1, message: 'hi' },
+        { id: 2, message: 'where other people ?' },
+        { id: 3, message: 'hello guys :)' },
+        { id: 4, message: 'I am groot )))' }
     ],
 
 }
@@ -22,7 +22,7 @@ const dialogsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newMessageBody: '',
-                messages: [...state.messages, { id: 5, message: action.newMessage }],
+                messages: [...state.messages, { id: state.messages.length, message: action.newMessage }],
                 dialogs: [...state.dialogs, { id: 5, name: 'Lena' }]
             };
         }

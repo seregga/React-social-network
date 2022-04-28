@@ -15,6 +15,9 @@ import { connect } from 'react-redux';
 import { getAuthUserData } from './redux/auth-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 
+// const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
+// const ProfileParams = React.lazy(() => import('./components/Profile/ProfileParams'))
+
 class App extends React.Component {
     componentDidMount() {
         this.props.getAuthUserData()
@@ -34,6 +37,10 @@ class App extends React.Component {
                         <Route path='*' element={<ProfileContainer />} />
 
                         <Route path='/profile/:userId' element={<ProfileParams />} />
+
+                        {/* <Route path='/profile/:userId' render={() => {
+                            return <React.Suspense fallback={<Preloader />}><DialogsContainer /></React.Suspense>
+                        }} /> */}
 
                         <Route path='/dialogs' element={<DialogsContainer />} />
 
